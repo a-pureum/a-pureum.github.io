@@ -17,29 +17,53 @@
 
   /* Colors */
   /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
-  --color-primary-50: oklch(0.971 0.014 343.198);
-  --color-primary-100: oklch(0.948 0.028 342.258);
-  --color-primary-200: oklch(0.899 0.061 343.231);
-  --color-primary-300: oklch(0.823 0.12 346.018);
-  --color-primary-400: oklch(0.718 0.202 349.761);
-  --color-primary-500: oklch(0.656 0.241 354.308);
-  --color-primary-600: oklch(0.592 0.249 0.584);
-  --color-primary-700: oklch(0.525 0.223 3.958);
-  --color-primary-800: oklch(0.459 0.187 3.815);
-  --color-primary-900: oklch(0.408 0.153 2.432);
-  --color-primary-950: oklch(0.284 0.109 3.907);
+  --color-primary-50: #fef4f5;
+  --color-primary-100: #fde4e8;
+  --color-primary-200: #fcc8d2;
+  --color-primary-300: #fb9cad;
+  --color-primary-400: #fd8199;
+  --color-primary-500: #fd6586;
+  --color-primary-600: #e55575;
+  --color-primary-700: #c23e5d;
+  --color-primary-800: #9f2b47;
+  --color-primary-900: #7d1b33;
+  --color-primary-950: #590e21;
 
-  --color-gray-50: oklch(0.985 0.002 247.839);
-  --color-gray-100: oklch(0.967 0.003 264.542);
-  --color-gray-200: oklch(0.928 0.006 264.531);
-  --color-gray-300: oklch(0.872 0.01 258.338);
-  --color-gray-400: oklch(0.707 0.022 261.325);
-  --color-gray-500: oklch(0.551 0.027 264.364);
-  --color-gray-600: oklch(0.446 0.03 256.802);
-  --color-gray-700: oklch(0.373 0.034 259.733);
-  --color-gray-800: oklch(0.278 0.033 256.848);
-  --color-gray-900: oklch(0.21 0.034 264.665);
-  --color-gray-950: oklch(0.13 0.028 261.692);
+  --color-gray-50: #f7f7f7;
+  --color-gray-100: #ededed;
+  --color-gray-200: #dcdcdc;
+  --color-gray-300: #bdbdbd;
+  --color-gray-400: #989898;
+  --color-gray-500: #7b7b7b;
+  --color-gray-600: #626262;
+  --color-gray-700: #4d4d4d;
+  --color-gray-800: #3e3e3e;
+  --color-gray-900: #313131;
+  --color-gray-950: #1a1a1a;
+
+  --color-pistachio-50: #f9faf7;
+  --color-pistachio-100: #f0f4e9;
+  --color-pistachio-200: #e1ead5;
+  --color-pistachio-300: #c5dbaa;
+  --color-pistachio-400: #abc48d;
+  --color-pistachio-500: #8eab6e;
+  --color-pistachio-600: #72914f;
+  --color-pistachio-700: #59773b;
+  --color-pistachio-800: #425c2a;
+  --color-pistachio-900: #2b3d1c;
+  --color-pistachio-950: #1a2611;
+
+  --color-apricot-50: #fff5f0;
+  --color-apricot-100: #ffe6d9;
+  --color-apricot-200: #ffd2bb;
+  --color-apricot-300: #ffb28c;
+  --color-apricot-400: #ff925d;
+  --color-apricot-500: #f27438;
+  --color-apricot-600: #d45d25;
+  --color-apricot-700: #a8481d;
+  --color-apricot-800: #7d3516;
+  --color-apricot-900: #52230e;
+  --color-apricot-950: #361709;
 
   /* Line heights */
   --line-height-11: 2.75rem;
@@ -67,7 +91,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-gray-300, currentColor);
   }
 
   a,
@@ -108,6 +132,9 @@
     & :where(code):not(pre code) {
       color: var(--color-indigo-500);
     }
+    & :where(ul > li):not(:where([class~='not-prose'], [class~='not-prose'] *))::marker {
+      color: var(--color-primary-200);
+    }
   }
 
   .prose-invert {
@@ -135,7 +162,7 @@
 }
 
 .footnotes {
-  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+  @apply mt-12 border-t border-gray-300 pt-8 dark:border-gray-700;
 }
 
 .data-footnote-backref {
