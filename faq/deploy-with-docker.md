@@ -4,7 +4,7 @@ Follow the [official Next.js repo docker build example and instructions](https:/
 
 ```js
 // next.config.js
-module.exports = {
+export default {
   // ... rest of the configuration.
   output: 'standalone',
 }
