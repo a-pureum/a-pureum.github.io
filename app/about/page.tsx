@@ -4,9 +4,10 @@ import { coreContent } from 'pliny/utils/contentlayer'
 import { genPageMetadata } from 'app/seo'
 
 /** lib */
-import { QuoteIcon } from 'lucide-react'
+import { UserRoundIcon } from 'lucide-react'
 
 /** custom */
+import Image from '@/components/Image'
 import AuthorLayout from '@/layouts/AuthorLayout'
 
 export const metadata = genPageMetadata({ title: 'About' })
@@ -25,22 +26,35 @@ export default function Page() {
   return (
     <>
       <AuthorLayout content={mainContent}>
-        <section>
+        <section className="flex flex-col gap-2">
           <article>
-            <h5 className="flex flex-row gap-1.5 text-2xl font-extrabold">
-              <span>생각의 끈을 놓지 않는 집요함으로 코드의 맥락을 읽습니다.</span>
+            <h5 className="mt-0 mb-0 flex flex-row items-center -space-x-3 text-2xl font-extrabold">
+              <Image
+                src={'/static/svg/quote.svg'}
+                alt="quote"
+                width={56}
+                height={56}
+                className="z-0 mt-0 mb-0 pb-1"
+              />
+              <span className="text-primary-500 z-10 text-center">
+                생각의 끈을 놓지 않는 집요함으로 코드의 맥락을 읽습니다.
+              </span>
+              <Image
+                src={'/static/svg/quote.svg'}
+                alt="quote"
+                width={56}
+                height={56}
+                className="z-0 mt-0 mb-0 rotate-180 pt-1"
+              />
             </h5>
-            <p className="mt-2 mb-0">
-              {
-                '문제의 근본 원인을 파악할 때까지 끝까지 파고드는 성실함을 가진 사람, 주도적으로 생각하는 개발자가 되고자 합니다.'
-              }
-            </p>
           </article>
           <article>
-            <h3>About</h3>
-            <ul className="border-primary-300 bg-primary-100 rounded-3xl border p-3">
+            <h4 className="flex flex-row items-center text-gray-700 dark:text-gray-300">
+              <UserRoundIcon className="mr-1 h-4 w-4" /> About
+            </h4>
+            <ul className="border-primary-200 bg-primary-100 rounded-3xl border p-3 dark:border-gray-800 dark:bg-gray-900/70">
               {aboutMe.map((item, idx) => (
-                <li key={idx} className="mt-0.25 mb-0.25 ml-6">
+                <li key={idx} className="ml-6 text-sm">
                   {item}
                 </li>
               ))}
