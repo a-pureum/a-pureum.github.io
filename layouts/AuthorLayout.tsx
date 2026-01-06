@@ -13,7 +13,7 @@ interface Props {
 const preCompony: string[] = ['(전) 시스원 풀스택 개발자', '(전) 젬미디어 영상 디자이너']
 
 export default function AuthorLayout({ children, content }: Props) {
-  const { name, avatar, occupation, company, email, linkedin, github } = content
+  const { name, avatarlarge, occupation, company, email, linkedin, github } = content
 
   return (
     <>
@@ -36,9 +36,9 @@ export default function AuthorLayout({ children, content }: Props) {
         </div>
         <div className="items-start space-y-2 pt-4 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8">
           <div className="flex flex-col items-center space-x-2 pt-8">
-            {avatar && (
+            {avatarlarge && (
               <div className="border-primary-500 relative flex h-48 w-48 items-center justify-center rounded-full border">
-                <Image src={avatar} alt="avatar" width={192} height={192} className="z-10" />
+                <Image src={avatarlarge} alt="avatar" width={192} height={192} className="z-10" />
                 <div className="bg-primary-100 absolute h-44 w-44 rounded-full" />
               </div>
             )}
