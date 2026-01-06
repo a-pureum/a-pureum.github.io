@@ -28,20 +28,21 @@ export default function Page() {
         <section>
           <article>
             <h5 className="flex flex-row gap-1.5 text-2xl font-extrabold">
-              <QuoteIcon className="rotate-180 fill-gray-600 stroke-gray-600" />
               <span>생각의 끈을 놓지 않는 집요함으로 코드의 맥락을 읽습니다.</span>
-              <QuoteIcon className="fill-gray-600 stroke-gray-600" />
             </h5>
-            <p className="mt-1 mb-0">
+            <p className="mt-2 mb-0">
               {
-                '문제의 근본 원인을 파악할 때까지 끝까지 파고드는 성실함을 가진 사람, 주도적으로 생각하는 개발자가 되고 싶습니다.'
+                '문제의 근본 원인을 파악할 때까지 끝까지 파고드는 성실함을 가진 사람, 주도적으로 생각하는 개발자가 되고자 합니다.'
               }
             </p>
           </article>
           <article>
-            <ul>
+            <h3>About</h3>
+            <ul className="border-primary-300 bg-primary-100 rounded-3xl border p-3">
               {aboutMe.map((item, idx) => (
-                <li key={idx}>{item}</li>
+                <li key={idx} className="mt-0.25 mb-0.25 ml-6">
+                  {item}
+                </li>
               ))}
             </ul>
           </article>

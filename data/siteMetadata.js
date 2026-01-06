@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'a-pureum Blog',
+  title: 'Plog',
   author: 'Pureum Kim',
-  headerTitle: 'a-pureum Blog',
+  headerTitle: 'Plog',
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'ko-KR',
   theme: 'system', // system, dark or light
