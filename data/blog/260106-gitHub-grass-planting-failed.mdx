@@ -1,0 +1,81 @@
+---
+title: 사라진 내 잔디를 찾아서
+date: '2026-01-06'
+tags: ['오늘의 바보짓', 'github']
+draft: false
+summary: 깃허브 초보 농부의 잔디 누락 해결법
+---
+
+어디에선가 깃허브의 잔디가 곧 개발자의 성실도를 증명한다는 이야기를 들었습니다.  
+은근히 의식이 되어 혼자 진행하고 있는 프로젝트지만 열심히 커밋을 했더랬죠.  
+하지만 잔디가 하나도 안심어졌다는 사실을 뒤늦게 발견하게 되었습니다.🤦‍♀️  
+역시 뭔가를 하면 반영이 되었는지 확인하는 것까지가 개발의 완성임을 다시 한번 깨달았습니다.
+
+후회는 적당히 하고 잃어버린 잔디를 찾아 나서기로 했습니다. ☘️☘️
+저의 네비게이션 제미나이에게 물어본 결과 **git config에 입력한 이메일을 확인해봐야한다**는 답을 얻었습니다.
+
+정답이었습니다.  
+이 글의 태그가 오늘의 바보짓인데는 이유가 있습니다.  
+또 다시 바보짓을 반복하지 않기 위해 오늘의 해프닝을 기록하기로 했습니다.
+
+일단 깃허브에 등록한 이메일이 뭔지 확인하기 위해 깃허브에 들어갑니다.  
+우상단 **프로필 ⇒ 세팅 ⇒ 좌측 메뉴의 Access - Email** 메뉴에서  
+깃허브에 등록한 이메일을 확인합니다.
+
+```bash:git-bash
+# git config에 저장한 이메일 주소 확인
+git config user.email
+
+# 깃허브 계정에 등록된 이메일로 수정
+git config --global user.email "your-email@example.com"
+```
+
+프로젝트의 git bash에서 위의 코드를 입력하여 이메일 주소를 확인하고  
+깃허브 계정에 등록한 이메일과 git config에 입력한 이메일이 다를 경우 이메일을 수정해줍니다.  
+여기서 주의점은 <span style={{ color: 'red' }}>이메일을 바꿔도 소급 적용은 되지 않습니다.</span>
+
+잃어버린 잔디를 되찾고 싶다면
+
+1. 히스토리를 수정한 후 강제 푸시 - 다른 작업자가 있을 경우 오류날 수 있음
+2. 깃허브 계정에 잘못 입력했던 이메일을 추가하기
+
+저의 경우 개인프로젝트인데다가 모든 로그가 다 잘못된 이메일을 쓰고 있었기 때문에
+그냥 덮어쓰기를 진행하기로 했습니다.
+
+```bash:git-bash
+#잘못된 이메일 일괄 수정
+git filter-branch --env-filter '
+OLD_EMAIL="과거의_잘못된_이메일"
+CORRECT_NAME="깃허브_이름"
+CORRECT_EMAIL="깃허브_계정_이메일"
+
+if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags
+
+#수정 후 모든 로그의 사용자와 이메일 확인 - 변경 확인
+git log --pretty=format:"%h %an <%ae>"
+```
+
+혹시 모를 경우를 대비해 프로젝트를 따로 백업해놓고 작업을 진행했습니다.  
+위의 코드를 넣어 잘못된 이메일을 일괄 수정해 주었습니다.  
+그 다음 기존의 깃로그에 강제로 덮어쓰기를 진행합니다.
+
+```bash:git-bash
+#서버에 강제로 덮어 쓰기
+git push --force --tags origin 'refs/heads/*'
+```
+
+<span style={{ color: 'red', fontWeight: 'bold' }}>
+  ‼️ 이 작업은 원격 저장소의 기존 기록을 교체하므로 협업 중인 팀원이 있다면 신중해야합니다.
+</span>
+
+강제 푸시 진행 후 깃허브에 들어가면 집나간 잔디가 돌아온 것을 확인할 수 있습니다.

@@ -1,6 +1,7 @@
 import projectsData from '@/data/projectsData'
 import Card from '@/components/Card'
 import { genPageMetadata } from 'app/seo'
+import Acc from '@/components/Acc'
 
 export const metadata = genPageMetadata({ title: 'Projects' })
 
@@ -13,17 +14,7 @@ export default function Projects() {
             <span className="text-primary-500">P</span>rojects
           </h1>
         </div>
-        <div className="flex flex-row gap-2 overflow-hidden p-1 text-xs font-light text-nowrap text-gray-300 uppercase dark:text-gray-700">
-          <span>Pureum log</span>
-          <span>Personal log</span>
-          <span>Professional log</span>
-          <span>Pureum's Log / Blog</span>
-          <span>Personal & Professional</span>
-          <span>Pureum log</span>
-          <span>Personal log</span>
-          <span>Professional log</span>
-          <span>Pureum's Log / Blog</span>
-        </div>
+        <Acc />
         <div className="container py-12">
           <div className="-m-4 flex flex-wrap">
             {projectsData.map((d) => (

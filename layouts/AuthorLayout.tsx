@@ -4,6 +4,7 @@ import type { Authors } from 'contentlayer/generated'
 /** custom */
 import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
+import Acc from '@/components/Acc'
 
 interface Props {
   children: ReactNode
@@ -20,20 +21,10 @@ export default function AuthorLayout({ children, content }: Props) {
       <div className="divide-y divide-gray-300 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
           <h1 className="text-primary-300 text-3xl leading-9 font-extrabold tracking-tight sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            <span className="text-primary-500">P</span>log
+            <span className="text-primary-500">A</span>bout
           </h1>
         </div>
-        <div className="flex flex-row gap-2 overflow-hidden p-1 text-xs font-light text-nowrap text-gray-300 uppercase dark:text-gray-700">
-          <span>Pureum log</span>
-          <span>Personal log</span>
-          <span>Professional log</span>
-          <span>Pureum's Log / Blog</span>
-          <span>Personal & Professional</span>
-          <span>Pureum log</span>
-          <span>Personal log</span>
-          <span>Professional log</span>
-          <span>Pureum's Log / Blog</span>
-        </div>
+        <Acc />
         <div className="items-start space-y-2 pt-4 xl:grid xl:grid-cols-3 xl:space-y-0 xl:gap-x-8">
           <div className="flex flex-col items-center space-x-2 pt-8">
             {avatarlarge && (
