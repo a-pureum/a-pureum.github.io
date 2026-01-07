@@ -2,6 +2,7 @@ import projectsData from '@/data/projectsData'
 import Card from '@/components/Card'
 import { genPageMetadata } from 'app/seo'
 import Acc from '@/components/Acc'
+import { ConstructionIcon } from 'lucide-react'
 
 export const metadata = genPageMetadata({ title: 'Projects' })
 
@@ -17,15 +18,22 @@ export default function Projects() {
         <Acc />
         <div className="container py-12">
           <div className="-m-4 flex flex-wrap">
-            {projectsData.map((d) => (
-              <Card
-                key={d.title}
-                title={d.title}
-                description={d.description}
-                imgSrc={d.imgSrc}
-                href={d.href}
-              />
-            ))}
+            {projectsData.length > 0 ? (
+              projectsData.map((d) => (
+                <Card
+                  key={d.title}
+                  title={d.title}
+                  description={d.description}
+                  imgSrc={d.imgSrc}
+                  href={d.href}
+                />
+              ))
+            ) : (
+              <div className="flex h-full w-full flex-col items-center justify-center text-center text-2xl font-bold">
+                <ConstructionIcon className="h-12 w-12" />
+                공사중
+              </div>
+            )}
           </div>
         </div>
       </div>
