@@ -4,11 +4,13 @@ import withBundleAnalyzer from '@next/bundle-analyzer'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export',
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   eslint: {
     dirs: ['app', 'components', 'layouts', 'scripts'],
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
